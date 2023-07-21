@@ -227,3 +227,18 @@ div.qn-no{
     background-color: white;
     color: #4B50B9;
 }
+
+button.cross{
+    font-size: 25px;
+    color: #d2d3ff;
+    /* position: absolute; */
+    float: right;
+    width: 37px;
+    border-radius: 100%;
+    background-color: rgb(130, 132, 236);
+    border: none;
+}
+button.cross:hover{
+    background-color: #4B50B9;
+    transition: ease-in-out 200ms;
+}

@@ -161,21 +161,44 @@ function putputquiz() {
 
 //-----------------------------------------------
 
+// delete quiz
+
+// $(".card-form").ready.on("click", ".cross", function () {
+//   console.log(qn_no);
+// });
+
+function deleteQuiz(x) {
+  console.log(x.id);
+  const card = document.getElementById(`${x.id}`);
+  card.remove();
+  qn_no--;
+  // const cards = document.getElementsByClassName('card-form-dynamic');
+}
+
 // add quiz
 
 function addqn() {
   qn_no++;
+
   const newqn = document.getElementById("newqn");
 
   // Create the card-form div
   const cardFormDiv = document.createElement("div");
   cardFormDiv.classList.add("card-form");
+  cardFormDiv.setAttribute("id", `card${qn_no}`);
   cardFormDiv.setAttribute("style", "margin-top: 50px");
 
   // Create the qn-no div
   const qnNoDiv = document.createElement("div");
   qnNoDiv.classList.add("qn-no");
   qnNoDiv.textContent = `${qn_no}`; // Set the question number here
+
+  // Create cross div
+  const cross = document.createElement("button");
+  cross.classList.add("cross");
+  cross.setAttribute("id", "cross");
+  cross.setAttribute("onclick", `deleteQuiz(${cardFormDiv.id})`);
+  cross.textContent = "x";
 
   // Create the card-qn div
   const cardQnDiv = document.createElement("div");
@@ -273,6 +296,7 @@ function addqn() {
   divOptDiv.appendChild(cardOpsDiv);
 
   cardFormDiv.appendChild(qnNoDiv);
+  cardFormDiv.appendChild(cross);
   cardFormDiv.appendChild(cardQnDiv);
   cardFormDiv.appendChild(divOptDiv);
   newqn.appendChild(cardFormDiv);
